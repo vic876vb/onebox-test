@@ -1,0 +1,45 @@
+@use 'styles/variables' as *;
+
+:host {
+  display: contents;
+}
+
+.event-card {
+  --card-padding-inline: 16px;
+
+  &__header, &__content, &__footer {
+    padding-inline: var(--card-padding-inline);
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__image {
+    margin-inline: calc(-1 * var(--card-padding-inline));
+    width: calc(100% + 2 * var(--card-padding-inline));
+    max-width: fit-content;
+  }
+
+  &__description {
+    display: none;
+
+    @media #{$tablet-and-above} {
+      display: block;
+    }
+  }
+
+  &__date {
+    padding-block: 8px;
+  }
+
+  &__content, &__footer {
+    margin-block-start: 1rem;
+  }
+
+  &__button {
+    --mdc-filled-button-container-color: blue;
+    margin-inline: calc(-1 * var(--card-padding-inline));
+    width: calc(100% + 2 * var(--card-padding-inline));
+  }
+}

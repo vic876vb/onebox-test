@@ -1,0 +1,9 @@
+<div class="event-list__wrapper">
+  <ul class="event-list__content">
+    @for (event of events; track event.id) {
+      <!-- <li class="event-list__item" id="event-info-{{ event.id }}"> -->
+      <app-event-item [event]="event"></app-event-item>
+      <!-- </li> -->
+    }
+  </ul>
+</div>

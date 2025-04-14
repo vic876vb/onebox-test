@@ -1,0 +1,17 @@
+@use 'styles/variables' as *;
+
+.event-list {
+  &__wrapper {
+    margin-inline: auto;
+  }
+
+  &__content {
+    display: grid;
+    row-gap: 16px;
+
+    @media #{$tablet-and-above} {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 32px;
+    }
+  }
+}
