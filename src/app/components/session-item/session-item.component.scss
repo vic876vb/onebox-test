@@ -21,4 +21,10 @@
     justify-content: center;
     align-items: center;
   }
+
+  &__errors {
+    display: grid;
+    grid-auto-flow: row;
+    font-size: 0.75rem;
+  }
 }

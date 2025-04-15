@@ -57,7 +57,7 @@ export class SessionItemComponent implements OnInit {
         ?.tickets?.find((ticket) => ticket.date === this.session.date)?.quantity ?? 0;
 
     this.quantity = new FormControl<number>({ value: cartQuantity, disabled: true }, { nonNullable: true });
-    this.quantity.addValidators([Validators.required, Validators.min(0), Validators.max(this.session.availability)]);
+    this.quantity.addValidators([Validators.min(0), Validators.max(this.session.availability)]);
     this.quantity.valueChanges.pipe(tap((quantity) => this.quantityUpdated.emit(quantity))).subscribe();
   }
 

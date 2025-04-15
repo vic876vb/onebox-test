@@ -31,3 +31,13 @@
     </button>
   </span>
 </div>
+@if (quantity.errors) {
+  <div class="session-item__errors">
+    @if (quantity.hasError('min')) {
+      <span>No se pueden seleccionar menos de 0 localidades.</span>
+    }
+    @if (quantity.hasError('max')) {
+      <span>Solo se pueden seleccionar hasta {{ session.availability }} localidades.</span>
+    }
+  </div>
+}
