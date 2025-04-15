@@ -1,0 +1,18 @@
+.shopping-cart__item {
+  &-title {
+    line-height: 32px;
+    font-size: 20px;
+    letter-spacing: 0.0125em;
+    font-weight: 500;
+  }
+  &-ticket {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-quantity {
+    display: inline-flex;
+    align-items: center;
+  }
+}

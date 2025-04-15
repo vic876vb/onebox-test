@@ -1,0 +1,22 @@
+<div class="session-list__wrapper">
+  <div class="session-list__content">
+    <mat-card appearance="outlined" class="session-list__card">
+      <mat-card-content class="session-list__card-content">
+        @if (eventInfo().sessions?.length) {
+          <form [formGroup]="eventSessionForm">
+            <ul>
+              @for (session of eventInfo().sessions; track session) {
+                <li class="session-list__session" [formGroup]="sessionControls.at($index)">
+                  <app-session-item [session]="session" (quantityUpdated)="updateCart($event, session.date)"></app-session-item>
+                </li>
+              }
+            </ul>
+          </form>
+        } @else {
+          <span class="session-list__not-found">EVENT INFO NOT FOUND</span>
+        }
+      </mat-card-content>
+    </mat-card>
+    <app-shopping-cart></app-shopping-cart>
+  </div>
+</div>

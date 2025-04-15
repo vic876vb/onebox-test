@@ -1,0 +1,33 @@
+<div class="session-item__container">
+  <span class="session-item__info">Fecha: {{ session.date | date: 'dd/MM/yyyy' }}, Disponibilidad: {{ session.availability }}</span>
+  <span class="session-item__quantity">
+    <button
+      mat-icon-button
+      color="primary"
+      class="session-item__quantity-button"
+      aria-label="Decrease quantity"
+      [disabled]="quantity.value <= 0"
+      (click)="decreaseQuantity()"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+    <input
+      matInput
+      type="number"
+      inputmode="numeric"
+      [formControl]="quantity"
+      class="session-item__quantity-input no-spin-buttons"
+      readonly
+    />
+    <button
+      mat-icon-button
+      color="primary"
+      class="session-item__quantity-button"
+      aria-label="Increase quantity"
+      [disabled]="quantity.value >= session.availability"
+      (click)="increaseQuantity()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </span>
+</div>

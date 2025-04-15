@@ -1,0 +1,5 @@
+<div class="shopping-cart__container">
+  @for (item of cart.items; track item.event.id) {
+    <app-shopping-cart-item [cartItem]="item"></app-shopping-cart-item>
+  }
+</div>

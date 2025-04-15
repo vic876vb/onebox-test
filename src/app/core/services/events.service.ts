@@ -35,7 +35,7 @@ export class EventsService {
     );
   }
 
-  public getEventInfo(id: string): Observable<Event> {
+  public getEventInfo(id: string): Observable<EventInfo> {
     console.log(this._events());
     return this.http.get<EventInfo>(`http://localhost:3000/event-info/${id}`).pipe(
       tap((data) => {

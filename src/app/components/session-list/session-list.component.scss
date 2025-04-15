@@ -1,0 +1,38 @@
+@use 'styles/variables' as *;
+
+:host {
+  display: contents;
+}
+
+.session-list {
+  &__wrapper {
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  &__content {
+    display: grid;
+    row-gap: 16px;
+
+    @media #{$tablet-and-above} {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 32px;
+    }
+  }
+
+  &__card-content {
+    flex: 1;
+  }
+
+  &__not-found {
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+  }
+
+  &__session:not(:last-of-type) {
+    margin-block-end: 1rem;
+  }
+}

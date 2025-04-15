@@ -290,8 +290,7 @@ textarea,
   crash when using `color-mix(…)` with `currentcolor`. (https://github.com/tailwindlabs/tailwindcss/issues/17194)
 */
 
-@supports (not (-webkit-appearance: -apple-pay-button)) /* Not Safari */ or
-  (contain-intrinsic-size: 1px) /* Safari 17+ */ {
+@supports (not (-webkit-appearance: -apple-pay-button)) /* Not Safari */ or (contain-intrinsic-size: 1px) /* Safari 17+ */ {
   ::placeholder {
     color: color-mix(in oklab, currentcolor 50%, transparent);
   }
@@ -376,6 +375,20 @@ input:where([type='button'], [type='reset'], [type='submit']),
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
   height: auto;
+}
+
+/*
+  Hide increment and decrement buttons
+*/
+
+input.no-spin-buttons::-webkit-outer-spin-button,
+input.no-spin-buttons::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'].no-spin-buttons {
+  -moz-appearance: textfield;
 }
 
 /*

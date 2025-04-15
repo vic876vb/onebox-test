@@ -1,0 +1,24 @@
+.session-item {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__quantity {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  &__quantity-input {
+    width: 4ch;
+    text-align: center;
+  }
+
+  &__quantity-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

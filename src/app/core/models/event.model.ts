@@ -1,7 +1,7 @@
 export interface EventInfo {
   id: string;
-  event?: Event;
-  sessions?: Session[];
+  event: Event;
+  sessions: Session[];
 }
 
 export interface Event {
