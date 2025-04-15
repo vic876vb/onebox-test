@@ -1,20 +1,35 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, Input } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { CartItem } from '@models/cart.model';
+import { CartItem, Ticket } from '@models/cart.model';
+import { ShoppingCartService } from '@services/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart-item',
   standalone: true,
-  imports: [DatePipe, MatIcon, MatIconButton],
+  imports: [DatePipe, MatIconButton],
   templateUrl: './shopping-cart-item.component.html',
   styleUrls: ['./shopping-cart-item.component.scss']
 })
-export class ShoppingCartItemComponent implements OnInit {
+export class ShoppingCartItemComponent {
   @Input() public cartItem!: CartItem;
 
-  constructor() {}
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private cdRef: ChangeDetectorRef
+  ) {
+    effect(() => {
+      const cart = this.shoppingCartService.cart();
+      if (cart) {
+        this.cdRef.markForCheck();
+      }
+    });
+  }
 
-  ngOnInit() {}
+  public removeFromCart(ticket: Ticket): void {
+    this.shoppingCartService.removeFromCart({
+      event: this.cartItem.event,
+      ticket
+    });
+  }
 }

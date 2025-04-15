@@ -3,7 +3,10 @@ import { Cart, CartItem, CartPurchase } from '@models/cart.model';
 
 const STORAGE_KEY = 'SHOPPING_CART';
 
-type Action = { type: 'ADD_CART_ITEM'; payload: CartItem } | { type: 'UPDATE_CART_ITEM'; payload: CartPurchase };
+type Action =
+  | { type: 'ADD_CART_ITEM'; payload: CartItem }
+  | { type: 'UPDATE_CART_ITEM'; payload: CartPurchase }
+  | { type: 'REMOVE_CART_ITEM'; payload: CartPurchase };
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +29,10 @@ export class ShoppingCartService {
 
   public updateCart(purchase: CartPurchase): void {
     this.dispatch({ type: 'UPDATE_CART_ITEM', payload: purchase });
+  }
+
+  public removeFromCart(purchase: CartPurchase): void {
+    this.dispatch({ type: 'REMOVE_CART_ITEM', payload: purchase });
   }
 
   private dispatch(action: Action): void {
@@ -55,6 +62,16 @@ export class ShoppingCartService {
               .filter((item) => item.tickets?.length !== 0)
           };
         });
+      case 'REMOVE_CART_ITEM':
+        return this._cart.update((cart) => ({
+          items: cart.items
+            .map((item) =>
+              item.event.id === payload.event.id
+                ? { ...item, tickets: (item.tickets ?? []).filter((ticket) => ticket.date !== payload.ticket?.date) }
+                : item
+            )
+            .filter((item) => item.tickets?.length !== 0)
+        }));
     }
   }
 
