@@ -1,15 +1,12 @@
-import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, OnInit, signal } from '@angular/core';
-import { MatIconButton } from '@angular/material/button';
-import { MatInput } from '@angular/material/input';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, OnInit, signal } from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
 import { EventInfo } from '@models/event.model';
 import { EventsService } from '@services/events.service';
 import { EMPTY, of } from 'rxjs';
-import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import { distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { eventsParam } from 'src/app/app.paths';
-import { FormArray, FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ShoppingCartComponent } from '@components/shopping-cart/shopping-cart.component';
 import { SessionItemComponent } from '../session-item/session-item.component';
 import { ShoppingCartService } from '@services/shopping-cart.service';
@@ -40,13 +37,13 @@ export class SessionListComponent implements OnInit {
     private route: ActivatedRoute,
     private eventsService: EventsService,
     private formBuilder: NonNullableFormBuilder,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private cdRef: ChangeDetectorRef
   ) {
     effect(() => {
-      const eventInfo = this.eventInfo();
-      console.log('eveninfo', eventInfo);
-      if (eventInfo) {
-        eventInfo.sessions?.forEach((session) => console.log(session));
+      const cart = this.shoppingCartService.cart();
+      if (cart) {
+        this.cdRef.markForCheck();
       }
     });
   }

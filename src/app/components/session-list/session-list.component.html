@@ -7,7 +7,11 @@
             <ul>
               @for (session of eventInfo().sessions; track session) {
                 <li class="session-list__session" [formGroup]="sessionControls.at($index)">
-                  <app-session-item [session]="session" (quantityUpdated)="updateCart($event, session.date)"></app-session-item>
+                  <app-session-item
+                    [event]="eventInfo().event"
+                    [session]="session"
+                    (quantityUpdated)="updateCart($event, session.date)"
+                  ></app-session-item>
                 </li>
               }
             </ul>
