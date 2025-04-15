@@ -30,20 +30,14 @@ export class EventsService {
     const stored = this.loadFromStorage();
     return iif(() => stored.length > 0, of(stored), this.http.get<Event[]>('http://localhost:3000/events')).pipe(
       tap((data) => this.dispatch({ type: 'SET_EVENTS', payload: data })),
-      switchMap(() => of(this._events())),
-      tap((s) => console.log(this._events()))
+      switchMap(() => of(this._events()))
     );
   }
 
   public getEventInfo(id: string): Observable<EventInfo> {
-    console.log(this._events());
-    return this.http.get<EventInfo>(`http://localhost:3000/event-info/${id}`).pipe(
-      tap((data) => {
-        console.log(data);
-        this.dispatch({ type: 'UPDATE_EVENT', payload: data });
-      }),
-      tap(() => console.log(this._events()))
-    );
+    return this.http
+      .get<EventInfo>(`http://localhost:3000/event-info/${id}`)
+      .pipe(tap((data) => this.dispatch({ type: 'UPDATE_EVENT', payload: data })));
   }
 
   private dispatch(action: Action): void {

@@ -56,9 +56,7 @@ export class SessionListComponent implements OnInit {
           return of(params[eventsParam] as string);
         }),
         distinctUntilChanged(),
-        tap((id) => console.log(id)),
         switchMap((id) => this.eventsService.getEventInfo(id)),
-        tap((eventInfo) => console.log(eventInfo)),
         tap((eventInfo) => {
           if (!eventInfo) return;
           const sortedSessions = eventInfo.sessions?.sort((a, b) => Number(a.date) - Number(b.date)) || [];
@@ -72,9 +70,7 @@ export class SessionListComponent implements OnInit {
           );
 
           this.eventSessionForm.setControl('sessions', this.formBuilder.array(formGroups));
-        }),
-        tap((event) => {}),
-        tap(() => console.log(this.eventSessionForm))
+        })
       )
       .subscribe();
   }

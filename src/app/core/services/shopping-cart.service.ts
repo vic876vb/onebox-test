@@ -18,7 +18,6 @@ export class ShoppingCartService {
   constructor() {
     effect(() => {
       const cart = this._cart();
-      console.log('newcarr', cart);
       this.saveToStorage(cart);
     });
   }
