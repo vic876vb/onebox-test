@@ -14,7 +14,8 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('@components/session-list/session-list.component').then((m) => m.SessionListComponent)
       }
-    ]
+    ],
+    data: { canNavigate: true }
   },
   {
     path: '**',

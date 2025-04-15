@@ -1,5 +1,10 @@
 <app-header></app-header>
 <main class="main">
+  @if (canNavigate) {
+    <nav class="navigation">
+      <span><button mat-button color="primary" (click)="back()">Volver</button></span>
+    </nav>
+  }
   <div class="content">
     <router-outlet />
   </div>
