@@ -32,7 +32,6 @@ import { eventsPath } from 'src/app/app.paths';
     SafeHtmlPipe,
     DatePipe,
     RouterModule
-    // RouterLinkActive
   ],
   templateUrl: './event-item.component.html',
   styleUrls: ['./event-item.component.scss'],

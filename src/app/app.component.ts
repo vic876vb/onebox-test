@@ -12,7 +12,6 @@ import { filter } from 'rxjs/operators';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'onebox-test';
   public canNavigate: boolean = false;
 
   constructor(private router: Router) {

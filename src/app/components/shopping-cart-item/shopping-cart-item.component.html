@@ -1,14 +1,16 @@
-<div class="shopping-cart__item">
-  <div class="shopping-cart__item-title">{{ cartItem.event.title }}</div>
-  @for (ticket of cartItem.tickets; track ticket.date) {
-    <div class="shopping-cart__item-ticket">
-      <span>{{ ticket.date | date: 'dd/MM/yyyy' }}</span>
-      <span class="shopping-cart__item-quantity">
-        x{{ ticket.quantity }}
-        <button mat-icon-button type="button" aria-label="Remove" (click)="removeFromCart(ticket)">
-          <img src="/assets/img/trash.png" alt="Trash bin" />
-        </button>
-      </span>
-    </div>
-  }
-</div>
+@if (cartItem) {
+  <div class="shopping-cart__item">
+    <div class="shopping-cart__item-title">{{ cartItem.event.title }}</div>
+    @for (ticket of cartItem.tickets; track ticket.date) {
+      <div class="shopping-cart__item-ticket">
+        <span>{{ ticket.date | date: 'dd/MM/yyyy' }}</span>
+        <span class="shopping-cart__item-quantity">
+          x{{ ticket.quantity }}
+          <button mat-icon-button type="button" aria-label="Remove" (click)="removeFromCart(ticket)">
+            <img src="/assets/img/trash.png" alt="Trash bin" />
+          </button>
+        </span>
+      </div>
+    }
+  </div>
+}

@@ -1,11 +1,11 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { EventsService } from './events.service';
+import { AppTestingModule } from 'src/app/testing/app-testing.module';
 
 describe('Service: Events', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [AppTestingModule],
       providers: [EventsService]
     });
   });

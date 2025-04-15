@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-session-item',
   standalone: true,
-  imports: [DatePipe, MatInput, MatIconButton, MatIcon, DatePipe, ReactiveFormsModule],
+  imports: [DatePipe, MatInput, MatIconButton, MatIcon, ReactiveFormsModule],
   templateUrl: './session-item.component.html',
   styleUrls: ['./session-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

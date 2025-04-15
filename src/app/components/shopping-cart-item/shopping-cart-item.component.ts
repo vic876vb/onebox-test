@@ -27,6 +27,7 @@ export class ShoppingCartItemComponent {
   }
 
   public removeFromCart(ticket: Ticket): void {
+    if (!this.cartItem?.event) return;
     this.shoppingCartService.removeFromCart({
       event: this.cartItem.event,
       ticket

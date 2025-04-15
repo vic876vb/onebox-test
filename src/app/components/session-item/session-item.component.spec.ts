@@ -1,24 +1,29 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SessionItemComponent } from './session-item.component';
+import { ShoppingCartService } from '@services/shopping-cart.service';
 
 describe('SessionItemComponent', () => {
   let component: SessionItemComponent;
   let fixture: ComponentFixture<SessionItemComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SessionItemComponent ]
-    })
-    .compileComponents();
+      imports: [SessionItemComponent]
+      // providers: [
+      //   {
+      //     provide: ShoppingCartService,
+      //     useValue: {
+      //       cart: () => ({ items: [] })
+      //     }
+      //   }
+      // ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SessionItemComponent);
     component = fixture.componentInstance;
+    component.session = { date: '2025-01-01', availability: 2 };
     fixture.detectChanges();
   });
 
