@@ -1,16 +1,18 @@
 <mat-card class="event-card" appearance="outlined">
   <mat-card-header class="event-card__header">
     <mat-card-title-group>
-      <mat-card-title>
+      <mat-card-title class="event-card__header-title">
         <a [routerLink]="['/events', event.id]" routerLinkActive="active">{{ event.title }}</a>
       </mat-card-title>
-      <mat-card-subtitle>
+      <mat-card-subtitle class="event-card__header-subtitle">
         <a [routerLink]="['/events', event.id]" routerLinkActive="active">{{ event.subtitle }}</a>
       </mat-card-subtitle>
     </mat-card-title-group>
   </mat-card-header>
   <mat-card-content class="event-card__content">
-    <img mat-card-image class="event-card__image" [src]="event.image" [alt]="event.title" />
+    <a [routerLink]="['/events', event.id]" routerLinkActive="active">
+      <img mat-card-image class="event-card__image" [src]="event.image" [alt]="event.title" />
+    </a>
     <p class="event-card__date">
       <span>{{ event.startDate | date: 'dd/MM/yyyy' }}</span>
       -
@@ -22,6 +24,6 @@
     }
   </mat-card-content>
   <mat-card-footer class="event-card__footer">
-    <button mat-flat-button type="button" class="event-card__button">Comprar</button>
+    <button mat-flat-button type="button" class="event-card__button" [routerLink]="['/events', event.id]">Comprar</button>
   </mat-card-footer>
 </mat-card>

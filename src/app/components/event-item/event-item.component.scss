@@ -7,7 +7,14 @@
 .event-card {
   --card-padding-inline: 16px;
 
-  &__header, &__content, &__footer {
+  &__header-title,
+  &__header-subtitle {
+    color: $bright-blue;
+  }
+
+  &__header,
+  &__content,
+  &__footer {
     padding-inline: var(--card-padding-inline);
   }
 
@@ -33,12 +40,15 @@
     padding-block: 8px;
   }
 
-  &__content, &__footer {
+  &__content,
+  &__footer {
     margin-block-start: 1rem;
   }
 
   &__button {
-    --mdc-filled-button-container-color: blue;
+    --mdc-filled-button-container-color: #{$bright-blue};
+    --mdc-filled-button-label-text-color: #{$white};
+
     margin-inline: calc(-1 * var(--card-padding-inline));
     width: calc(100% + 2 * var(--card-padding-inline));
   }
